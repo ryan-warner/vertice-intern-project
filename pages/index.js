@@ -81,9 +81,13 @@ export default function Home() {
       const name = fetchData.data.PropensityToMoveUp.XData[index]
       const tempIndex = index
       proportions.forEach((element, index )=> {
+        var numberOfMembers = Math.round(element * item)
+        if (fetchData.data.Levels.XData[tempIndex] === "A") {
+          numberOfMembers = 0
+        }
         return tempDataProportions.push({
           x: fetchData.data.Levels.YData[index],
-          y: Math.round(element * item),
+          y: numberOfMembers,
           series: fetchData.data.Levels.XData[tempIndex],
           name: fetchData.data.PropensityToMoveUp.XData[index]
       });
